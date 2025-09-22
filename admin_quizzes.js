@@ -75,7 +75,7 @@
           if (!confirm("Delete this question?")) return;
 
           if (!savedQuizzes[currentQuiz]) {
-            savedQuizzes[currentQuiz] = [...qs]; // copy defaults first time
+            savedQuizzes[currentQuiz] = [...qs]; 
           }
           savedQuizzes[currentQuiz].splice(i, 1);
           allQuizzes[currentQuiz] = savedQuizzes[currentQuiz];
@@ -157,4 +157,5 @@
     renderQuestions();
   });
 })();
+
 
