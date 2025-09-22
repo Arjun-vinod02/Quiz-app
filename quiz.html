@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Quiz</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="quiz-header">
+    <span id="course-name"></span>
+    <span id="user-name"></span>
+  </header>
+
+  <main id="quiz-container" class="center">
+    <h2 id="question-text"></h2>
+
+    <div id="options" class="options"></div>
+
+    <div id="progress">
+      <div id="progress-bar"></div>
+    </div>
+
+    <p id="timer"></p>
+
+    <div class="nav-buttons">
+      <button id="back-btn" class="hidden">Back</button>
+      <button id="next-btn">Next</button>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="admin.html">Admin Dashboard</a>
+    </div>
+    <div>
+      <label class="dark-toggle"><input type="checkbox" id="dark-mode-toggle-quiz" /> Dark Mode</label>
+      <button id="logout-btn-quiz">Logout</button>
+    </div>
+  </footer>
+
+  <script src="questions.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

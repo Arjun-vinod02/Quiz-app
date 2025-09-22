@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Login to Admin Dashboard</h1>
+  </header>
+
+  <main class="center">
+    <div class="card">
+      <h2>Login</h2>
+      <input type="email" id="login-email" placeholder="Email" required />
+      <input type="password" id="login-password" placeholder="Password" required />
+      <p id="login-error" class="error hidden">Invalid email or password.</p>
+      <button id="login-btn">Login</button>
+      <p>Not an admin? <a href="index.html">Go to Home</a></p>
+    </div>
+  </main>
+
+  <footer>
+    <div>
+      <label class="dark-toggle"><input type="checkbox" id="dark-mode-toggle-login" /> Dark Mode</label>
+    </div>
+  </footer>
+
+  <script src="script.js"></script> 
+  <script src="login.js"></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Select a Course</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Select a Course and Enter Your Name</h1>
+  </header>
+
+  <main>
+    
+    <section id="courses" class="grid"></section>
+
+    
+    <section id="recent" class="hidden">
+      <h2>Recent Quizzes</h2>
+      <div id="recent-quizzes" class="grid"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="login.html">Admin Login</a> 
+      
+    </div>
+    <!-- <button id="logout-btn">Logout</button> -->
+  </footer>
+  <label>
+      Dark Mode
+      <input type="checkbox" id="dark-mode-toggle">
+    </label>
+
+  <script src="questions.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>

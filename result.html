@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Quiz Result</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="quiz-header">
+    <span id="course-name"></span>
+    <span id="user-name"></span>
+  </header>
+
+  <main class="center">
+    <div class="card">
+      <h2>Quiz Summary</h2>
+      <p id="score"></p>
+      <p id="percentage"></p>
+
+      <div id="breakdown"></div>
+
+      <div id="leaderboard-section" class="hidden">
+        <h3>Leaderboard</h3>
+        <table id="leaderboard">
+          <tr>
+            <th>Rank</th>
+            <th>User</th>
+            <th>Score</th>
+            <th>Date</th>
+          </tr>
+        </table>
+      </div>
+
+      <div class="nav-buttons">
+        <button onclick="retakeQuiz()">Retake Quiz</button>
+        <button onclick="window.location.href='index.html'">Choose Another Course</button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="admin.html">Admin Dashboard</a>
+    </div>
+    <div>
+      <label class="dark-toggle"><input type="checkbox" id="dark-mode-toggle-result" /> Dark Mode</label>
+      <button id="logout-btn-result">Logout</button>
+    </div>
+  </footer>
+
+  <script src="questions.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

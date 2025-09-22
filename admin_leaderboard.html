@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Manage Leaderboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Manage Leaderboard</h1>
+  </header>
+
+  <main class="center">
+    <label for="course-select"><strong>Select Course:</strong></label>
+    <select id="course-select"></select>
+
+    <table id="leaderboard-table">
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>User</th>
+          <th>Score</th>
+          <th>Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <div class="card">
+      <h2>Add Score Manually</h2>
+      <input type="text" id="manual-user" placeholder="User Name" />
+      <input type="number" id="manual-score" placeholder="Score" />
+      <input type="datetime-local" id="manual-date" />
+      <button id="add-score">Add Score</button>
+    </div>
+  </main>
+
+  <footer>
+    <button onclick="window.location.href='admin.html'">Back to Dashboard</button>
+  </footer>
+
+  <script src="questions.js"></script>
+  <script src="script.js"></script> 
+  <script src="admin_leaderboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Admin Dashboard</h1>
+  </header>
+
+  <nav class="admin-nav">
+    <ul>
+      <li><a href="admin_leaderboard.html">Leaderboard Management</a></li>
+      <li><a href="admin_quizzes.html">Create/Edit Quizzes</a></li>
+      <li><a href="admin_users.html">User Management</a></li>
+    </ul>
+  </nav>
+
+  <main class="dashboard-grid">
+    <div class="card">
+      <h2>Total Users</h2>
+      <p id="total-users">0</p>
+    </div>
+    <div class="card">
+      <h2>Total Quizzes</h2>
+      <p id="total-quizzes">0</p>
+    </div>
+    <div class="card">
+      <h2>Total Attempts</h2>
+      <p id="total-attempts">0</p>
+    </div>
+
+    <div class="card">
+      <h2>Recent Quizzes</h2>
+      <div id="admin-recent"></div>
+    </div>
+  </main>
+
+  <footer>
+    
+    <button id="logout-btn" onclick="window.location.href='index.html'">Logout</button>
+  </footer>
+
+  <script src="questions.js"></script>
+  <script src="script.js"></script> 
+  <script src="admin.js"></script>
+</body>
+<div>
+      <label class="dark-toggle"><input type="checkbox" id="dark-mode-toggle-login" /> Dark Mode</label>
+    </div>
+</html>
