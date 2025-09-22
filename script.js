@@ -1,4 +1,3 @@
-
 function safeGet(key, fallback) {
   try { return JSON.parse(localStorage.getItem(key)) ?? fallback; } catch(e) { return fallback; }
 }
@@ -9,7 +8,6 @@ function escapeHtml(s){
     return ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' })[c];
   });
 }
-
 
 function checkAdminAuth() {
   const loggedInUser = safeGet("loggedInUser", null);
@@ -337,4 +335,5 @@ document.addEventListener("DOMContentLoaded", () => {
       window.location.href = "index.html";
     });
   });
+
 });
