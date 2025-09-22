@@ -43,7 +43,7 @@ function renderCourses() {
       <p>Take this quiz to test your knowledge</p>
       <input type="text" class="username" placeholder="Enter your name">
       <button class="start-btn" data-course="${escapeHtml(courseName)}">Start Quiz</button>
-      <p class="error hidden">⚠ Please enter your name!</p>
+      <p class="error hidden">Please enter your name!</p>
     `;
 
     coursesDiv.appendChild(card);
@@ -337,3 +337,4 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
