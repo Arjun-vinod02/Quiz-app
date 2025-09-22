@@ -1,32 +1,20 @@
-
+// admin_quizzes.js (final version with defaults + saved support)
 (function(){
-  
+  // Helpers
   function safeGet(key, fallback) {
     try { return JSON.parse(localStorage.getItem(key)) ?? fallback; } catch(e) { return fallback; }
   }
   function safeSet(key, val) { localStorage.setItem(key, JSON.stringify(val)); }
-  function escapeHtml(s){
-  if (s == null) return "";
-  return String(s).replace(/[&<>"']/g, function(c){
-    return ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' })[c];
-  });
-}
-
+  function escapeHtml(s){ if (s==null) return ""; return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 
   document.addEventListener("DOMContentLoaded", () => {
-   
-    if (!checkAdminAuth()) { 
-      return; 
-    }
-   
-
     const quizSelect = document.getElementById("quiz-select");
     const questionList = document.getElementById("question-list");
     const saveBtn = document.getElementById("save-question");
     const saveQuizBtn = document.getElementById("save-quiz");
     const newQuizBtn = document.getElementById("new-quiz");
 
-    
+    // Load data: defaults + saved
     let savedQuizzes = safeGet("quizData", {});
     const defaults = (typeof quizData !== "undefined") ? quizData : {};
     let allQuizzes = { ...defaults, ...savedQuizzes };
@@ -34,7 +22,7 @@
     let currentQuiz = Object.keys(allQuizzes)[0] || null;
     let editingIndex = null;
 
-    
+    // Refresh quiz dropdown
     function refreshQuizSelect() {
       quizSelect.innerHTML = "";
       const names = Object.keys(allQuizzes);
@@ -54,7 +42,7 @@
       quizSelect.value = currentQuiz;
     }
 
-  
+    // Render questions of current quiz
     function renderQuestions() {
       questionList.innerHTML = "";
       if (!currentQuiz) return;
@@ -67,16 +55,14 @@
       qs.forEach((q, i) => {
         const li = document.createElement("li");
         li.innerHTML = `
-          <span>${q.question}</span> 
-  <span class="options">Options: ${q.options.join(', ')}</span>
-  <span class="answer">Answer: ${q.answer}</span>
-  <div>
-    <button class="edit-btn">Edit</button>
-    <button class="delete-btn">Delete</button>
-  </div>`;
+          <span><strong>Q${i+1}:</strong> ${escapeHtml(q.question)}</span>
+          <div>
+            <button class="edit-btn">Edit</button>
+            <button class="delete-btn">Delete</button>
+          </div>`;
         questionList.appendChild(li);
 
-        
+        // Edit
         li.querySelector(".edit-btn").addEventListener("click", () => {
           document.getElementById("q-text").value = q.question;
           document.getElementById("q-options").value = q.options.join(", ");
@@ -84,12 +70,12 @@
           editingIndex = i;
         });
 
-        
+        // Delete
         li.querySelector(".delete-btn").addEventListener("click", () => {
           if (!confirm("Delete this question?")) return;
 
           if (!savedQuizzes[currentQuiz]) {
-            savedQuizzes[currentQuiz] = [...qs];
+            savedQuizzes[currentQuiz] = [...qs]; // copy defaults first time
           }
           savedQuizzes[currentQuiz].splice(i, 1);
           allQuizzes[currentQuiz] = savedQuizzes[currentQuiz];
@@ -99,7 +85,7 @@
       });
     }
 
-    
+    // Save / update question
     saveBtn.addEventListener("click", () => {
       const qText = document.getElementById("q-text").value.trim();
       const qOptions = document.getElementById("q-options").value.split(",").map(s => s.trim()).filter(Boolean);
@@ -134,7 +120,7 @@
       document.getElementById("q-answer").value = "";
     });
 
-   
+    // Save quiz (persist everything)
     saveQuizBtn.addEventListener("click", () => {
       safeSet("quizData", savedQuizzes);
       allQuizzes = { ...defaults, ...savedQuizzes };
@@ -143,14 +129,14 @@
       alert("Quiz saved!");
     });
 
-    
+    // Change quiz
     quizSelect.addEventListener("change", () => {
       currentQuiz = quizSelect.value;
       editingIndex = null;
       renderQuestions();
     });
 
- 
+    // New quiz
     newQuizBtn.addEventListener("click", () => {
       let name = prompt("Enter new quiz name:").trim();
       if (!name) return;
@@ -166,7 +152,7 @@
       renderQuestions();
     });
 
-    
+    // Init
     refreshQuizSelect();
     renderQuestions();
   });
